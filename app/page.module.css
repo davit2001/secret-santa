@@ -80,4 +80,19 @@
     @media (max-width: 768px) {
         font-size: 1.5rem;
     }
+    transition: all 3s ease-in-out;
+}
+
+.fadeText {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.show {
+    opacity: 1;
+}
+
+.emptyCelebrateText {
+    width: 100%;
+    max-height: 60px;
 }

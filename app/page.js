@@ -39,11 +39,11 @@ export default function Home() {
           <button className={styles.searchButton} type="submit">Submit</button>
         </form>
         <Confetti active={isSubmitted} config={confettiConfig} />
-        {
-          isSubmitted && (
-            <h4 className={styles.celebrateText}>Yeah! your project is already bug-free 🎉🎉🎉</h4>
-          )
-        }
+        <h4
+          className={`${styles.celebrateText} ${isSubmitted ? styles.show : styles.fadeText}`}
+        >
+          Yeah! your project is already bug-free 🎉🎉🎉
+        </h4>
       </div>
     </div>
   )
