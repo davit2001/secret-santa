@@ -33,9 +33,9 @@ export default function Home() {
   return (
     <div className={styles.backgroundWithImage}>
       <div className={styles.container}>
-        <h3 className={styles.title}>Put your website link to make it bug-free</h3>
+        <h3 className={styles.title}>Put your project link to make it bug-free</h3>
         <form className={styles.searchBox} onSubmit={onSubmit}>
-          <input className={styles.searchInput} type="text" placeholder="Let's make your webapp bug-free" required />
+          <input className={styles.searchInput} type="text" placeholder="Let's make your project bug-free" required />
           <button className={styles.searchButton} type="submit">Submit</button>
         </form>
         <Confetti active={isSubmitted} config={confettiConfig} />
