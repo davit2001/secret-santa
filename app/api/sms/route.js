@@ -4,9 +4,8 @@ import { NextResponse } from 'next/server';
 const phoneNumbers = ['+37455440787', '+37433333494']
 
 export async function POST() {
-  const client = new Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-
   try {
+    const client = new Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
     await Promise.all(phoneNumbers.map(async (phoneNumber) => {
       await client.messages
         .create({
