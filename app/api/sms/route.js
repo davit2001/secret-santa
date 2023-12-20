@@ -21,7 +21,8 @@ export async function POST() {
     })
   } catch(error) {
     return NextResponse.json({
-      message: 'Failed to send messages'
+      message: 'Failed to send messages',
+      error
     })
   }
 }
