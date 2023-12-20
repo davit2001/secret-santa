@@ -16,7 +16,8 @@ export async function POST() {
     }));
 
     return NextResponse.json({
-      message: 'Successfully sent messages'
+      message: 'Successfully sent messages',
+      client
     })
   } catch(error) {
     return NextResponse.json({
