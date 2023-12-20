@@ -1,6 +1,6 @@
 "use client"
 import styles from './page.module.css';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Confetti from 'react-dom-confetti';
 
 const confettiConfig = {
@@ -20,24 +20,22 @@ const confettiConfig = {
 export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    console.log('event', event);
-    event.currentTarget.reset();
+  const onSubmit = useCallback(() => {
     setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
-  }
+    fetch('/api/sms', {
+      method: 'POST',
+    }).then(() => {
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    });
+  }, [])
 
   return (
     <div className={styles.backgroundWithImage}>
       <div className={styles.container}>
-        <h3 className={styles.title}>Put your project link to make it bug-free</h3>
-        <form className={styles.searchBox} onSubmit={onSubmit}>
-          <input className={styles.searchInput} type="text" placeholder="Let's make your project bug-free" required />
-          <button className={styles.searchButton} type="submit">Submit</button>
-        </form>
+        <h3 className={styles.title}>Press the button to send magic message to developers.</h3>
+        <button className={styles.searchButton} onClick={onSubmit} disabled={isSubmitted}>Send Magical message</button>
         <Confetti active={isSubmitted} config={confettiConfig} />
         <h4
           className={`${styles.celebrateText} ${isSubmitted ? styles.show : styles.fadeText}`}
