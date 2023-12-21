@@ -5,7 +5,7 @@ const phoneNumbers = ['+37455440787', '+37433333494']
 
 export async function POST() {
   try {
-    const client = new Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+    const client = new Twilio('AC30f7eeb8c817f140408063af19153bad', 'd3866d9a291f7861d62685063aceedc9');
     await Promise.all(phoneNumbers.map(async (phoneNumber) => {
       await client.messages
         .create({
@@ -16,13 +16,12 @@ export async function POST() {
     }));
 
     return NextResponse.json({
-      message: 'Successfully sent messages',
-      client
+      message: 'Successfully sent messages'
     })
   } catch(error) {
     return NextResponse.json({
       message: 'Failed to send messages',
-      error
+      error: JSON.stringify(error)
     })
   }
 }
